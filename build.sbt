@@ -59,3 +59,4 @@ lazy val eclipseSettings = Seq(
   unmanagedSourceDirectories in Compile := Seq((javaSource in Compile).value),
   unmanagedSourceDirectories in Test := Seq((javaSource in Test).value)
 )
+
