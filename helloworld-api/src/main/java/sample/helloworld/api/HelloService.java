@@ -24,20 +24,20 @@ public interface HelloService extends Service {
   /**
    * Example: curl http://localhost:9000/api/hello/Alice
    */
-  ServiceCall<String, NotUsed, String> hello();
+  ServiceCall<NotUsed, String> hello(String id);
 
   /**
    * Example: curl -H "Content-Type: application/json" -X POST -d '{"message":
    * "Hi"}' http://localhost:9000/api/hello/Alice
    */
-  ServiceCall<String, GreetingMessage, Done> useGreeting();
+  ServiceCall<GreetingMessage, Done> useGreeting(String id);
 
   @Override
   default Descriptor descriptor() {
     // @formatter:off
     return named("helloservice").with(
-        restCall(Method.GET,  "/api/hello/:id",       hello()),
-        restCall(Method.POST, "/api/hello/:id",       useGreeting())
+        restCall(Method.GET,  "/api/hello/:id",  this::hello),
+        restCall(Method.POST, "/api/hello/:id", this::useGreeting)
       ).withAutoAcl(true);
     // @formatter:on
   }

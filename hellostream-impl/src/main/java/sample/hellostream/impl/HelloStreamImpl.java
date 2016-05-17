@@ -26,8 +26,8 @@ public class HelloStreamImpl implements HelloStream {
   }
 
   @Override
-  public ServiceCall<NotUsed, Source<String, NotUsed>, Source<String, NotUsed>> stream() {
-    return (id, hellos) -> completedFuture(
-        hellos.mapAsync(8, name -> helloService.hello().invoke(name, NotUsed.getInstance())));
+  public ServiceCall<Source<String, NotUsed>, Source<String, NotUsed>> stream() {
+    return hellos -> completedFuture(
+        hellos.mapAsync(8, name -> helloService.hello(name).invoke()));
   }
 }

@@ -20,10 +20,10 @@ import com.lightbend.lagom.javadsl.api.ServiceCall;
  */
 public interface HelloStream extends Service {
 
-  ServiceCall<NotUsed, Source<String, NotUsed>, Source<String, NotUsed>> stream();
+  ServiceCall<Source<String, NotUsed>, Source<String, NotUsed>> stream();
 
   @Override
   default Descriptor descriptor() {
-    return named("hellostream").with(namedCall("hellostream", stream()));
+    return named("hellostream").with(namedCall("hellostream", this::stream));
   }
 }
