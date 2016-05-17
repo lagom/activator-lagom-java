@@ -4,14 +4,13 @@
 package sample.helloworld.api;
 
 import static com.lightbend.lagom.javadsl.api.Service.named;
-import static com.lightbend.lagom.javadsl.api.Service.restCall;
+import static com.lightbend.lagom.javadsl.api.Service.pathCall;
 
 import akka.Done;
 import akka.NotUsed;
 import com.lightbend.lagom.javadsl.api.Descriptor;
 import com.lightbend.lagom.javadsl.api.Service;
 import com.lightbend.lagom.javadsl.api.ServiceCall;
-import com.lightbend.lagom.javadsl.api.transport.Method;
 
 /**
  * The hello service interface.
@@ -36,8 +35,8 @@ public interface HelloService extends Service {
   default Descriptor descriptor() {
     // @formatter:off
     return named("helloservice").with(
-        restCall(Method.GET,  "/api/hello/:id",  this::hello),
-        restCall(Method.POST, "/api/hello/:id", this::useGreeting)
+        pathCall("/api/hello/:id",  this::hello),
+        pathCall("/api/hello/:id", this::useGreeting)
       ).withAutoAcl(true);
     // @formatter:on
   }
