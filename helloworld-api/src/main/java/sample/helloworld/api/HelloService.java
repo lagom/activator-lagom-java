@@ -34,7 +34,7 @@ public interface HelloService extends Service {
   @Override
   default Descriptor descriptor() {
     // @formatter:off
-    return named("helloservice").with(
+    return named("helloservice").withCalls(
         pathCall("/api/hello/:id",  this::hello),
         pathCall("/api/hello/:id", this::useGreeting)
       ).withAutoAcl(true);

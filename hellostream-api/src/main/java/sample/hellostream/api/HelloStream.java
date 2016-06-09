@@ -24,6 +24,6 @@ public interface HelloStream extends Service {
 
   @Override
   default Descriptor descriptor() {
-    return named("hellostream").with(namedCall("hellostream", this::stream));
+    return named("hellostream").withCalls(namedCall("hellostream", this::stream));
   }
 }
