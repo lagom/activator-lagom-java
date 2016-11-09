@@ -14,7 +14,7 @@ lazy val helloworldImpl = project("helloworld-impl")
   .settings(
     version := "1.0-SNAPSHOT",
     libraryDependencies ++= Seq(
-      lagomJavadslPersistence,
+      lagomJavadslPersistenceCassandra,
       lagomJavadslTestKit
     )
   )
