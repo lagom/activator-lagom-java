@@ -68,3 +68,4 @@ lazy val eclipseSettings = Seq(
   EclipseKeys.withJavadoc := true
 
 )
+
