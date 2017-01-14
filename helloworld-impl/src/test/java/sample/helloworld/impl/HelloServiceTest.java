@@ -10,7 +10,6 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import akka.NotUsed;
 import sample.helloworld.api.GreetingMessage;
 import sample.helloworld.api.HelloService;
 
